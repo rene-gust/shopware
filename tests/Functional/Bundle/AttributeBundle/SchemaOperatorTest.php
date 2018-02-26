@@ -33,9 +33,6 @@ class SchemaOperatorTest extends \PHPUnit\Framework\TestCase
             'integer' => 123,
             'float' => 123,
             'boolean' => 1,
-            'boolean' => 0,
-            'boolean' => true,
-            'boolean' => false,
             'date' => '2010-01-01',
             'datetime' => '2010-01-01 10:00:00',
             'text' => 'test123',
@@ -84,6 +81,18 @@ class SchemaOperatorTest extends \PHPUnit\Framework\TestCase
         ];
 
         $this->iterateTypeArray($types);
+    }
+
+    /**
+     * @covers CrudService::parseDefaultValue
+     * @throws \Exception
+     */
+    public function testDefaultValuesBoolean()
+    {
+        $this->iterateTypeArray(['boolean' => 1]);
+        $this->iterateTypeArray(['boolean' => 0]);
+        $this->iterateTypeArray(['boolean' => true]);
+        $this->iterateTypeArray(['boolean' => false]);
     }
 
     /**
